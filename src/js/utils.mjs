@@ -61,7 +61,7 @@ export function renderWithTemplate(
 export async function loadTemplate(path){
   const html = await fetch(path).then(convertToText);
   const template = document.createElement("template");
-  template.innerHTML =html;
+  template.innerHTML = html;
   return template;
 }
 
