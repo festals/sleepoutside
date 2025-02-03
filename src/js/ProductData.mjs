@@ -1,5 +1,3 @@
-const baseURL = import.meta.env.VITE_SERVER_URL
-
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
@@ -7,6 +5,7 @@ function convertToJson(res) {
     throw new Error("Bad Response");
   }
 }
+const baseURL = import.meta.env.VITE_SERVER_URL
 
 export default class ProductData {
   constructor(category) {

@@ -22,13 +22,14 @@ export default class  ProductListing {
 
     async init() {
         // our dataSource will return a Promise...so we can use await to resolve it.
-        const list = await this.dataSource.getData(this.category);
-        this.renderList(limitedList);
-        document.querySelector(".title").innerHTML = this.category;
+        const list = await this.dataSource.getData();
+        this.renderList(List);
+        
     }
 
     renderList(list) {
-        renderListWithTemplate(productCardTemplate, this.listElement, list);
+        const htmlString = list.map(productCardTemplate);
+        this.listElement.innerHTML = htmlString.join("");
     }
 
     /*filterList(list){
