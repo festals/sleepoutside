@@ -1,5 +1,23 @@
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 
+function productDetailsTemplate(product) {
+  return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
+    <h2 class="divider">${product.NameWithoutBrand}</h2>
+    <img
+      class="divider"
+      src="${product.Images.PrimaryLarge}"
+      alt="${product.NameWithoutBrand}"
+    />
+    <p class="product-card__price">$${product.FinalPrice}</p>
+    <p class="product__color">${product.Colors[0].ColorName}</p>
+    <p class="product__description">
+    ${product.DescriptionHtmlSimple}
+    </p>
+    <div class="product-detail__add">
+      <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
+    </div></section>`;
+}
+
 export default class ProductDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -9,7 +27,8 @@ export default class ProductDetails {
 
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
-    this.renderProductDetails();
+    //this.renderProductDetails();
+    this.renderProductDetails("main");
     document
       .getElementById("addToCart")
       .addEventListener("click", this.addToCart.bind(this));
@@ -17,7 +36,7 @@ export default class ProductDetails {
 
   addToCart() {
     let cart = getLocalStorage("so-cart");
-    if (!Array.isArray(cart)) {
+    if (!cart) {
       cart = [];
     }
     cart.push(this.product);
@@ -26,23 +45,11 @@ export default class ProductDetails {
     alert(`${this.product.NameWithoutBrand} has been added to your cart.`);
   }
 
-  renderProductDetails() {
-    document.querySelector(".product-detail").innerHTML = `
-      <h3>${this.product.Brand.Name}</h3>
-      <h2 class="divider">${this.product.NameWithoutBrand}</h2>
-      <img
-        class="divider"
-        src="${this.product.Image}"
-        alt="${this.product.NameWithoutBrand}"
-      />
-      <p class="product-card__price">$${this.product.FinalPrice}</p>
-      <p class="product__color">${this.product.Colors[0].ColorName}</p>
-      <p class="product__description">
-        ${this.product.DescriptionHtmlSimple}
-      </p>
-      <div class="product-detail__add">
-        <button id="addToCart" data-id="${this.product.Id}">Add to Cart</button>
-      </div>
-    `;
+  renderProductDetails(selector) {
+    const element = document.querySelector(selector);
+    element.insertAdjacentHTML(
+      "afterBegin",
+      productDetailsTemplate(this.product)
+    );
   }
 }
