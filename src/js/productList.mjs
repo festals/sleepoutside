@@ -13,28 +13,31 @@ function productCardTemplate(product) {
 </li>`;
 }
 
-export default class ProductList {
-  constructor(category, dataSource, listElement) {
-    // We passed in this information to make our class as reusable as possible.
-    // Being able to define these things when we use the class will make it very flexible
-    this.category = category;
-    this.dataSource = dataSource;
-    this.listElement = listElement;
-  }
-  async init() {
-    // our dataSource will return a Promise...so we can use await to resolve it.
-    const list = await this.dataSource.getData();
-    // render the list
-    this.renderList(list);
-  }
-  // render after doing the first stretch
-  renderList(list) {
-    renderListWithTemplate(productCardTemplate, this.listElement, list);
-  }
+export default class  ProductListing {
+    constructor(category, dataSource, listElement){
+        this.category = category;
+        this.dataSource = dataSource;
+        this.listElement = listElement; 
+    }
 
-  // render before doing the stretch
-   renderList(list) {
-    const htmlStrings = list.map(productCardTemplate);
-    this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
-  }
+    async init() {
+        // our dataSource will return a Promise...so we can use await to resolve it.
+        const list = await this.dataSource.getData();
+        let limitedList = this.filterList(list);
+        this.renderList(limitedList);
+    }
+
+    renderList(list) {
+        renderListWithTemplate(productCardTemplate, this.listElement, list);
+    }
+
+    filterList(list){
+      let limitedList = [];
+      list.forEach(element => {
+        if (element.Id != "989CG" && element.Id != "880RT"){
+          limitedList.push(element)
+        };  
+      });
+      return limitedList;
+    }
 }
