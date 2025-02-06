@@ -32,6 +32,17 @@ export default class  ProductListing {
     }
 
     
+    filterList(list){
+      let limitedList = [];
+      list.forEach(element => {
+        if (element.Id != "989CG" && element.Id != "880RT"){
+          limitedList.push(element)
+        };  
+      });
+      return limitedList;
+    }
+
+    
   // renderList(list) {
   //   const htmlStrings = list.map(productCardTemplate);
   //   this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
