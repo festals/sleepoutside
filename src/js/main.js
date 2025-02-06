@@ -8,3 +8,4 @@ const listing = new ProductList("Tents", dataSource, element);
 
 loadHeaderFooter();
 listing.init();
+
