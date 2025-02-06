@@ -22,8 +22,8 @@ export default class ProductDetails {
     }
     cart.push(this.product);
     setLocalStorage("so-cart", cart);
-     // Provide feedback to the user
-  
+
+    alert(`${this.product.NameWithoutBrand} has been added to your cart.`);
   }
 
   renderProductDetails() {
