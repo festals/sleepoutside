@@ -33,8 +33,8 @@ export default class ProductList {
   }
 
   // render before doing the stretch
-  // renderList(list) {
-  //   const htmlStrings = list.map(productCardTemplate);
-  //   this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
-  // }
+   renderList(list) {
+    const htmlStrings = list.map(productCardTemplate);
+    this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
+  }
 }
