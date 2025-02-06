@@ -26,9 +26,7 @@ export default class ProductDetails {
     setLocalStorage("so-cart", cart);
 
     alert(`${this.product.NameWithoutBrand} has been added to your cart.`);
-  
   }
-
   renderProductDetails() {
     document.querySelector(".product-detail").innerHTML = `
       <h3>${this.product.Brand.Name}</h3>
