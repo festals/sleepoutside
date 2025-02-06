@@ -31,7 +31,6 @@ export default class  ProductListing {
         renderListWithTemplate(productCardTemplate, this.listElement, list);
     }
 
-    
     filterList(list){
       let limitedList = [];
       list.forEach(element => {
@@ -41,10 +40,4 @@ export default class  ProductListing {
       });
       return limitedList;
     }
-
-    
-  // renderList(list) {
-  //   const htmlStrings = list.map(productCardTemplate);
-  //   this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
-  // }
 }
