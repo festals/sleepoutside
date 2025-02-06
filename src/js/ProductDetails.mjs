@@ -23,27 +23,7 @@ export default class ProductDetails {
     cart.push(this.product);
     setLocalStorage("so-cart", cart);
      // Provide feedback to the user
-  const addButton = document.getElementById("addToCart");
   
-  // Change the button text to indicate the product has been added
-  addButton.textContent = "Added to Cart";
-  
-  // Optionally, disable the button for a brief time to prevent multiple clicks
-  addButton.disabled = true;
-
-  // Optionally, show a message in the page (example: a temporary popup or text)
-  const feedbackMessage = document.createElement('p');
-  feedbackMessage.textContent = `${this.product.NameWithoutBrand} has been added to your cart!`;
-  feedbackMessage.classList.add('feedback-message');
-  document.querySelector(".product-detail").appendChild(feedbackMessage);
-
-  // Optionally, remove the message after 3 seconds
-  setTimeout(() => {
-    feedbackMessage.remove();
-    addButton.disabled = false; // Re-enable the button
-    addButton.textContent = "Add to Cart"; // Reset button text
-  }, 3000);
-
   }
 
   renderProductDetails() {
