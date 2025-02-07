@@ -7,6 +7,11 @@ function renderCartContents() {
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
 
-
+// Example function to clear the cart content
+function clearCart() {
+    const cartItems = document.getElementById('cart-items');
+    cartItems.innerHTML = ''; // Remove all cart items from the cart list
+    alert('Cart has been cleared!');
+}
 
 renderCartContents();

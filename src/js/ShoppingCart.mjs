@@ -1,7 +1,8 @@
 import { getLocalStorage } from "./utils.mjs";
 
 export function cartItemTemplate(item, onQuantityChange){
-    return `<li class="cart-card divider">
+    return `<ul id =cart-items>
+        <li class="cart-card divider">
         <a href="#" class="cart-card__image">
             <img
                 src="${item.Image}"
@@ -18,5 +19,7 @@ export function cartItemTemplate(item, onQuantityChange){
         
         <p class="cart-card__price">$${item.FinalPrice}</p>
         
-    </li>`;
+        </li>
+    <ul>`;
+    
 }
