@@ -40,7 +40,7 @@ export function renderListWithTemplate(
 ) {
   const htmlStrings = list.map(templateFn);
   // if clear is true we need to clear out the contents of the parent.
-  if (clear) {
+  if (clear === "true") {
     parentElement.innerHTML = "";
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
@@ -58,6 +58,11 @@ export function renderWithTemplate(
   }
 }
 
+// yes no maybe I don't know
+export function convertToText(response) {
+  return response.text();
+}
+
 export async function loadTemplate(path){
   const html = await fetch(path).then(convertToText);
   const template = document.createElement("template");
@@ -65,12 +70,19 @@ export async function loadTemplate(path){
   return template;
 }
 
+
+// async function loadTemplate(path) {
+//   const res = await fetch(path);
+//   const template = await res.text();
+//   return template;
+// }
+
 export async function loadHeaderFooter(){
   const headerTemplate = await loadTemplate("../partials/header.html");
   const footerTemplate = await loadTemplate("../partials/footer.html");
 
-  const header = document.querySelector("#mainheader");
-  const footer = document.querySelector("#mainfooter");
+  const header = document.getElementById("mainheader");
+  const footer = document.getElementById("mainfooter");
 
   renderWithTemplate(headerTemplate,header);
   renderWithTemplate(footerTemplate,footer);
