@@ -93,6 +93,7 @@ export default class ShoppingCart {
         cartFooter.classList.remove("hide");
 
         // Calculate the total price
+        // const totalPrice = calculateTotalPrice(cartItems);
         const totalPrice = calculateTotalPrice(cartItems, this.parentSelector);
 
         // Update the cart total
@@ -117,9 +118,26 @@ export default class ShoppingCart {
         });
     }
 
+    // displayEmptyCartMessage() {
+    //     const cartContainer = document.querySelector(this.parentSelector);
+    //     cartContainer.innerHTML = `<p>Your cart is empty.</p>`;
+    // }
+
     displayEmptyCartMessage() {
         const cartContainer = document.querySelector(this.parentSelector);
         cartContainer.innerHTML = `<p>Your cart is empty.</p>`;
+        
+        const cartFooter = document.querySelector('.cart-footer');
+        cartFooter.classList.add('hide');  // Hide the footer when the cart is empty
     }
+
+    // update cart icon inside the class
+    updateCartIcon(cartItems) {
+        const cartCountElement = document.querySelector('.cart-count');
+        if (cartCountElement) {
+            cartCountElement.textContent = cartItems.length > 0 ? cartItems.length : '';
+        }
+    }
+    
 }
 //------------using remove item button-------------
