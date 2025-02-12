@@ -15,6 +15,14 @@ function productDetailsTemplate(product) {
     </p>
     <div class="product-detail__add">
       <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
+    </div>
+    <div class="product-comments">
+      <h4>Customer Comments</h4>
+      <div class="comments-list">
+        ${comments.map(comment => `<p>${comment}</p>`).join('')}
+      </div>
+      <textarea id="commentInput" placeholder="Add a comment..."></textarea>
+      <button id="submitComment">Submit Comment</button>
     </div></section>`;
 }
 
