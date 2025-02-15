@@ -86,4 +86,37 @@ export async function loadHeaderFooter(){
 
   renderWithTemplate(headerTemplate,header);
   renderWithTemplate(footerTemplate,footer);
+
+  
 }
+
+// Apply discount function (either percentage or fixed amount)
+export function applyDiscount(price, discount, type = 'percentage') {
+  let discountedPrice = price;
+
+  if (type === 'percentage') {
+    discountedPrice -= (price * discount / 100);
+  } else if (type === 'fixed') {
+    discountedPrice -= discount;
+  }
+
+  return discountedPrice < 0 ? 0 : discountedPrice;
+}
+
+// Retrieve price from localStorage, apply discount, and update the price
+const originalPrice = getLocalStorage('price');  // Get the original price from localStorage
+const discount = 10;  // 10% discount
+const newPrice = applyDiscount(originalPrice, discount, 'percentage');
+
+// Save the discounted price back to localStorage
+setLocalStorage('price', newPrice);
+
+// Function to render discounted price to the DOM
+export function renderDiscountedPrice(parentElement, price) {
+  const priceElement = `<div class="discounted-price">Discounted Price: $${price.toFixed(2)}</div>`;
+  parentElement.insertAdjacentHTML('afterbegin', priceElement);
+}
+
+// Display the discounted price in the HTML
+const parentElement = document.querySelector("#price-container");  // Adjust the selector as needed
+renderDiscountedPrice(parentElement, newPrice);
