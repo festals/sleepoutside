@@ -67,7 +67,7 @@ export async function loadTemplate(path){
   const html = await fetch(path).then(convertToText);
   const template = document.createElement("template");
   template.innerHTML =html;
-  return template;
+  return template.content(true);
 }
 
 

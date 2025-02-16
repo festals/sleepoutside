@@ -283,19 +283,27 @@ button {
   position: absolute;
   top: 8px;
   right: 8px;
-  background: transparent;
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
-  color: #f00;
   /* Red color for better visibility */
   transition: color 0.3s ease;
+  padding: 0.5em 2em;
+  background-color: var(--secondary-color);
+  color: white;
+  margin: auto;
+  display: block;
+  border: 0;
+  font-size: var(--large-font);
+  cursor: pointer;
 }
 
 .cart-card .removeButton:hover {
   color: #900;
   /* Darker red on hover */
 }
+
+
 
 @media screen and (min-width: 500px) {
   body {

@@ -1,45 +1,9 @@
-// import { getLocalStorage } from "./utils.mjs";
-
-// function cartItemTemplate(item) {
-//     return <li class="cart-card divider">
-//         <a href="#" class="cart-card__image">
-//         <img
-//             src="${item.Image}"
-//             alt="Image of ${item.Name}"
-//         />
-//         <a href="#">
-//             <h2 class="card__name">${item.Name}</h2>
-//         </a>
-//         <button class="removeButtons">remove item</button>
-//         <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-//         <p class="cart-card__quantity">qty: 1</p>
-//         <p class="cart-card__price">$${item.FinalPrice}</p>
-//         </li>
-
-// }
-
-
-// export default class ShoppingCart {
-//     constructor(key, parentSelector) {
-//         this.key = key;
-//         this.parentSelector = parentSelector;
-//     }
-
-//     renderCartContents() {
-//         const cartItems = getLocalStorage(this.key);
-//         const htmlItems = cartItems.map((item, index) => cartItemTemplate(item, index));
-//         const cartContainer = document.querySelector(this.parentSelector);
-//         cartContainer.innerHTML = htmlItems.join("");         // Attach event listeners for the "remove item"
-//     }
-// }
-//----------------First Attmept Ends Here---------------------------
-
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function cartItemTemplate(item, index) {
     return `
     <li class="cart-card divider" data-index="${index}">
-        <button class="removeButton" data-index="${index}" aria-label="Remove item">&times;</button>
+        <button class="removeButton" data-index="${index}" aria-label="Remove item">Remove Item;</button>
         <a href="#" class="cart-card__image">
             <img src="${item.Image}" alt="Image of ${item.Name}" />
         </a>
@@ -111,4 +75,4 @@ export default class ShoppingCart{
         cartContainer.innerHTML = `<p>Your cart is empty.</p>`;
     }
 }
-//------------using remove item button-------------
+
