@@ -112,11 +112,11 @@ const newPrice = applyDiscount(originalPrice, discount, 'percentage');
 setLocalStorage('price', newPrice);
 
 // Function to render discounted price to the DOM
-export function renderDiscountedPrice(parentElement, price) {
-  const priceElement = `<div class="discounted-price">Discounted Price: $${price.toFixed(2)}</div>`;
-  parentElement.insertAdjacentHTML('afterbegin', priceElement);
-}
+// export function renderDiscountedPrice(parentElement, price) {
+//   const priceElement = `<div class="discounted-price">Discounted Price: $${price.toFixed(2)}</div>`;
+//   parentElement.insertAdjacentHTML('afterbegin', priceElement);
+// }
 
-// Display the discounted price in the HTML
-const parentElement = document.querySelector("#price-container");  // Adjust the selector as needed
-renderDiscountedPrice(parentElement, newPrice);
+// // Display the discounted price in the HTML
+// const parentElement = document.querySelector("#price-container");  // Adjust the selector as needed
+// renderDiscountedPrice(parentElement, newPrice);
